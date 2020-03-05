@@ -23,10 +23,13 @@ public class Topico {
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 	@Enumerated(EnumType.STRING)
 	private StatusTopico status = StatusTopico.NAO_RESPONDIDO;
+	
 	@ManyToOne
 	private Usuario autor;
+
 	@ManyToOne
 	private Curso curso;
+	
 	@OneToMany
 	private List<Resposta> respostas = new ArrayList<>();
 
@@ -36,6 +39,15 @@ public class Topico {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+	
+	public Topico() {
+		
+	}
+	public Topico(String titulo, String mensagem, Curso curso) {
+		this.titulo = titulo;
+		this.mensagem = mensagem;
+		this.curso = curso;
 	}
 
 	@Override
